@@ -1,16 +1,17 @@
 import { useNTState, useNTValue } from 'ntcore-react'
 import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
-import type { FC } from 'react'
+import { type FC } from 'react'
+import { LevelButtonGroup, IntakeToggle, StateHistory } from './components'
 
 const Dashboard: FC = () => {
   const currentState = useNTValue<string>(
     '/SmartDashboard/Commodore/Current State',
-    NetworkTablesTypeInfos.kInteger,
+    NetworkTablesTypeInfos.kString,
     'UNKNOWN'
   )
   const [desiredState] = useNTState<string>(
     '/SmartDashboard/Commodore/Desired State',
-    NetworkTablesTypeInfos.kInteger,
+    NetworkTablesTypeInfos.kString,
     'Setting to: UNKNOWN'
   )
 
@@ -28,6 +29,9 @@ const Dashboard: FC = () => {
         <div>Control Cycle: {controlCycle}</div>
       </div>
       <div className="hexagon my-6"></div>
+      <LevelButtonGroup />
+      <IntakeToggle />
+      <StateHistory />
     </div>
   )
 }
