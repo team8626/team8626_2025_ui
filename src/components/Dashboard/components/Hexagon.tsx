@@ -1,0 +1,33 @@
+import type { FC } from 'react'
+import { useMeasure } from 'react-use'
+
+const Hexagon: FC = () => {
+  const [ref, { width, height }] = useMeasure<HTMLDivElement>()
+  const numberOfButtons = 6
+  const radius = 215
+
+  return (
+    <div className="relative">
+      <div className="hexagon p-6" ref={ref} />
+      {Array.from({ length: numberOfButtons }, (_, i) => {
+        const angle = (2 * Math.PI * i) / numberOfButtons
+        const x = radius * Math.cos(angle) + width / 2
+        const y = radius * Math.sin(angle) + height / 2
+
+        return (
+          <div
+            key={`button-for-${i}`}
+            className="absolute w-[50px] h-[50px] bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"
+            style={{
+              left: `${x}px`,
+              top: `${y}px`,
+            }}
+          >
+            {i + 1}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+export default Hexagon

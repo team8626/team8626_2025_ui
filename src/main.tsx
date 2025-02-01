@@ -1,6 +1,5 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './styles/index.css'
 import { NTProvider } from 'ntcore-react'
 import App from './components/App'
 import CssBaseline from '@mui/material/CssBaseline';

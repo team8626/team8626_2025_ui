@@ -2,7 +2,12 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'alliance-blue': '#0000FF',
+        'alliance-red': '#FF0000',
+      },
+    },
   },
   plugins: [],
 }
