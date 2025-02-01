@@ -17,11 +17,13 @@ const Hexagon: FC = () => {
         return (
           <div
             key={`button-for-${i}`}
-            className="absolute w-[50px] h-[50px] bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"
+            role="button"
+            className="absolute w-[50px] h-[50px] bg-blue-500 rounded-full flex items-center justify-center text-white font-bold hover:bg-purple-500 cursor-pointer"
             style={{
               left: `${x}px`,
               top: `${y}px`,
             }}
+            onClick={() => console.log(`Button ${i + 1} clicked`)}
           >
             {i + 1}
           </div>
