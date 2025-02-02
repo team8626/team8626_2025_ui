@@ -21,6 +21,11 @@ const Dashboard: FC = () => {
     NetworkTablesTypeInfos.kDouble,
     0.0
   )
+  const [allianceColor] = useNTState<string>(
+    '/SmartDashboard/Presets/UI/AllianceColor',
+    NetworkTablesTypeInfos.kString,
+    'UNKNOWN'
+  )
 
   return (
     <>
@@ -39,7 +44,7 @@ const Dashboard: FC = () => {
         <StateHistory />
       </div>
       <div className="col-start-4 col-span-4">
-        <Hexagon />
+        <Hexagon allianceColor={allianceColor}/>
       </div>
     </>
   )

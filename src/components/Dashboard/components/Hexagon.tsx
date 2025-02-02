@@ -1,14 +1,21 @@
 import type { FC } from 'react'
 import { useMeasure } from 'react-use'
 
-const Hexagon: FC = () => {
+interface HexagonProps {
+ allianceColor: string;
+}
+
+const Hexagon: FC<HexagonProps> = ({ allianceColor }) => {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
   const numberOfButtons = 12
   const radius = 165
 
+  // Map allianceColor to the corresponding CSS color
+  const hexagonBgColor = allianceColor === 'RED' ? 'red' : allianceColor === 'BLUE' ? 'blue' : 'gray';
+
   return (
     <div className="relative">
-      <div className="hexagon p-6" ref={ref} />
+      <div className="hexagon p-6" ref={ref} style={{ 'background-color': hexagonBgColor } as React.CSSProperties} />
       {Array.from({ length: numberOfButtons }, (_, i) => {
         const angle = -( (-7 * Math.PI / 12) + (2 * Math.PI * i) / numberOfButtons)
         const x = radius * Math.cos(angle) + width / 2
