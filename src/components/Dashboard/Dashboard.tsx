@@ -1,7 +1,7 @@
 import { useNTState, useNTValue } from 'ntcore-react'
 import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
 import { type FC } from 'react'
-import { LevelButtonGroup, IntakeToggle, StateHistory, Hexagon } from './components'
+import { LevelButtonGroup, IntakeToggle, StateHistory, Hexagon, Timer} from './components'
 import { Typography } from '@mui/material'
 
 const Dashboard: FC = () => {
@@ -21,19 +21,31 @@ const Dashboard: FC = () => {
     NetworkTablesTypeInfos.kDouble,
     0.0
   )
+
   const [allianceColor] = useNTState<string>(
-    '/SmartDashboard/Presets/UI/AllianceColor',
+    '/SmartDashboard/Dashboard/AllianceColor',
     NetworkTablesTypeInfos.kString,
     'UNKNOWN'
   )
 
+  const matchTime = useNTValue<number>(
+    'SmartDashboard/Dashboard/matchTime',
+    NetworkTablesTypeInfos.kInteger,
+    0
+  )
+
   return (
     <>
-      <div className="col-span-full md:col-start-1 md:col-span-12 flex flex-col gap-y-2">
+      <div className="col-span-8 md:col-start-1 md:col-span-8 flex flex-col gap-y-2">
         <Typography variant="body1">Current State: {currentState}</Typography>
         <Typography variant="body1">Desired State: {desiredState}</Typography>
         <Typography variant="body1">Control Cycle: {controlCycle}</Typography>
+        <Typography variant="body1">Match Time: {matchTime}</Typography>
+
       </div>
+      <div className="col-span-4">
+        <Timer matchTime={matchTime}/>
+        </div>
       <div className="col-span-4">
         <LevelButtonGroup />
       </div>
@@ -46,6 +58,7 @@ const Dashboard: FC = () => {
       <div className="col-start-4 col-span-4">
         <Hexagon allianceColor={allianceColor}/>
       </div>
+
     </>
   )
 }
