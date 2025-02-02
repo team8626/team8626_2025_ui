@@ -3,16 +3,17 @@ import { useMeasure } from 'react-use'
 
 const Hexagon: FC = () => {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
-  const numberOfButtons = 6
-  const radius = 215
+  const numberOfButtons = 12
+  const radius = 165
 
   return (
     <div className="relative">
       <div className="hexagon p-6" ref={ref} />
       {Array.from({ length: numberOfButtons }, (_, i) => {
-        const angle = (2 * Math.PI * i) / numberOfButtons
+        const angle = -( (-7 * Math.PI / 12) + (2 * Math.PI * i) / numberOfButtons)
         const x = radius * Math.cos(angle) + width / 2
         const y = radius * Math.sin(angle) + height / 2
+        const letter = String.fromCharCode(65 + i); // 97 is the ASCII code for 'A'
 
         return (
           <div
@@ -23,9 +24,9 @@ const Hexagon: FC = () => {
               left: `${x}px`,
               top: `${y}px`,
             }}
-            onClick={() => console.log(`Button ${i + 1} clicked`)}
+            onClick={() => console.log(`Button ${letter} clicked`)}
           >
-            {i + 1}
+            {letter}
           </div>
         )
       })}
