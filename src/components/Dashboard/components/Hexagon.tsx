@@ -15,7 +15,7 @@ const Hexagon: FC<HexagonProps> = ({ allianceColor }) => {
 
   return (
     <div className="relative">
-      <div className="hexagon p-6" ref={ref} style={{ 'background-color': hexagonBgColor } as React.CSSProperties} />
+      <div className="hexagon p-6" ref={ref} style={{ 'background': hexagonBgColor } as React.CSSProperties} />
       {Array.from({ length: numberOfButtons }, (_, i) => {
         const angle = -( (-7 * Math.PI / 12) + (2 * Math.PI * i) / numberOfButtons)
         const x = radius * Math.cos(angle) + width / 2
