@@ -1,4 +1,4 @@
-import { useNTState, useNTValue } from 'ntcore-react'
+import { useNTState, useNTValue } from '../../lib/ntcore-react'
 import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
 import { type FC } from 'react'
 import { LevelButtonGroup, IntakeToggle, StateHistory, Hexagon, Timer} from './components'

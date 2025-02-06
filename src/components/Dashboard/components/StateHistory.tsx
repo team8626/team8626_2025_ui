@@ -1,7 +1,7 @@
 import { useEffect, useState, type FC } from 'react'
 import Typography from '@mui/material/Typography'
-import { useNTValue } from 'ntcore-react'
 import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
+import { useNTValue } from '../../../lib/ntcore-react'
 
 export type Intake = 'left' | 'right'
 
