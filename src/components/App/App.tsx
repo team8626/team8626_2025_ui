@@ -1,10 +1,10 @@
-import { useNTConnected } from 'ntcore-react'
+import { useNTConnected } from '../../lib/ntcore-react'
 import type { FC } from 'react'
 import NotConnected from '../NotConnected'
 import Dashboard from '../Dashboard'
 
 const App: FC = () => {
-  const connected = true;// useNTConnected()
+  const connected = useNTConnected()
 
   return (
     <main className="h-[100vh] grid grid-cols-4 gap-6 mx-auto px-6 py-2 md:grid-cols-12 w-full">

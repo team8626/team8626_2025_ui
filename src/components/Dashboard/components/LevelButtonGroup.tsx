@@ -8,7 +8,11 @@ import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
 export type Level = 'L1' | 'L2' | 'L3' | 'L4'
 
 const LevelButtonGroup: FC = () => {
-  const [level, setLevel] = useNTState<string>('SmartDashboard/Presets/UI/SelectedCORALLevel', NetworkTablesTypeInfos.kString, 'L1')
+  const [level, setLevel] = useNTState<string>(
+    'SmartDashboard/Presets/UI/SelectedCORALLevel',
+    NetworkTablesTypeInfos.kString,
+    'L1'
+  )
 
   return (
     <div className="flex flex-col gap-y-2 justify-start">
@@ -18,7 +22,7 @@ const LevelButtonGroup: FC = () => {
         orientation="vertical"
         value={level}
         exclusive
-        onChange={(_e, v) => setLevel(v, {id: 1})}
+        onChange={(_e, v) => setLevel(v)}
         className="w-fit"
       >
         <ToggleButton value="L1">L1</ToggleButton>
