@@ -2,10 +2,8 @@ import type { FC } from 'react'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import ToggleButton from '@mui/material/ToggleButton'
 import Typography from '@mui/material/Typography'
-import { useNTState } from '../../../lib/ntcore-react'
+import { useNTState, useNTValue } from '../../../lib/ntcore-react'
 import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
-
-export type Level = 'L1' | 'L2' | 'L3' | 'L4'
 
 const LevelButtonGroup: FC = () => {
   const [level, setLevel] = useNTState<string>(
@@ -13,11 +11,15 @@ const LevelButtonGroup: FC = () => {
     NetworkTablesTypeInfos.kString,
     'L1'
   )
+  const allowedLevels = useNTValue<string[]>(
+    'SmartDashboard/Presets/UI/AllowedCORALLevels',
+    NetworkTablesTypeInfos.kStringArray,
+    ['L1', 'L4']
+  )
 
   return (
     <div className="flex flex-col gap-y-2 justify-start">
-      <Typography variant="h3">Level</Typography>
-      <Typography variant="h3">Current Set Level (Robot): {level}</Typography>
+      <Typography variant="h3">Coral Level</Typography>
       <ToggleButtonGroup
         orientation="vertical"
         value={level}
@@ -25,10 +27,11 @@ const LevelButtonGroup: FC = () => {
         onChange={(_e, v) => setLevel(v)}
         className="w-fit"
       >
-        <ToggleButton value="L1">L1</ToggleButton>
-        <ToggleButton value="L2">L2</ToggleButton>
-        <ToggleButton value="L3">L3</ToggleButton>
-        <ToggleButton value="L4">L4</ToggleButton>
+        {allowedLevels?.map((level) => (
+          <ToggleButton key={level} value={level}>
+            {level}
+          </ToggleButton>
+        ))}
       </ToggleButtonGroup>
     </div>
   )
