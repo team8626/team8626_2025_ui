@@ -27,11 +27,7 @@ const LevelButtonGroup: FC = () => {
 
   // Function to handle button toggle
   const handleToggle = (new_level: string) => {
-    if(level === new_level) {
-      setLevel('');
-    } else { 
       setLevel(new_level);
-    };
   }
 
   return (
