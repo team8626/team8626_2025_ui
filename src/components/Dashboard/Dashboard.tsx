@@ -1,7 +1,7 @@
 import { useNTState, useNTValue } from '../../lib/ntcore-react'
 import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
 import { type FC } from 'react'
-import { LevelButtonGroup, IntakeToggle, StateHistory, Hexagon, Timer} from './components'
+import { LevelButtonGroup, IntakeToggle, StateHistory, Hexagon, Timer, GamePieceStates} from './components'
 import { Typography } from '@mui/material'
 
 const Dashboard: FC = () => {
@@ -34,6 +34,17 @@ const Dashboard: FC = () => {
     0
   )
 
+  const [algaeState] = useNTState<string>(
+    '/SmartDashboard/Dashboard/AlgaeState',
+    NetworkTablesTypeInfos.kString,
+    'UNKNOWN'
+  )
+  const [coralState] = useNTState<string>(
+    '/SmartDashboard/Dashboard/CoralState',
+    NetworkTablesTypeInfos.kString,
+    'UNKNOWN'
+  )
+
   return (
     <>
       <div className="col-span-8 md:col-start-1 md:col-span-8 flex flex-col gap-y-2">
@@ -54,6 +65,9 @@ const Dashboard: FC = () => {
       </div>
       <div className="col-span-4">
         <StateHistory />
+      </div>
+      <div className="col-span-4">
+        <GamePieceStates coralState={coralState} algaeState={algaeState}/>
       </div>
       <div className="col-start-4 col-span-4">
         <Hexagon allianceColor={allianceColor}/>
