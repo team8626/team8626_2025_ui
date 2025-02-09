@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
-import ToggleButton from '@mui/material/ToggleButton'
+import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useNTState, useNTValue } from '../../../lib/ntcore-react'
 import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
@@ -16,6 +16,8 @@ const LevelButtonGroup: FC = () => {
     NetworkTablesTypeInfos.kStringArray,
     ['L1', 'L2', 'L3', 'L4']
   )
+  const numberOfButtons = possibleLevels.length;
+
 
   const allowedLevels = useNTValue<string[]>(
     'SmartDashboard/Presets/UI/AllowedCORALLevels',
@@ -23,23 +25,33 @@ const LevelButtonGroup: FC = () => {
     ['L1', 'L4']
   )
 
+  // Function to handle button toggle
+  const handleToggle = (new_level: string) => {
+    if(level === new_level) {
+      setLevel('');
+    } else { 
+      setLevel(new_level);
+    };
+  }
+
   return (
-    <div className="flex flex-col gap-y-2 justify-start">
-      <Typography variant="h3">Coral Level</Typography>
-      <ToggleButtonGroup
-        orientation="vertical"
-        value={level}
-        exclusive
-        onChange={(_e, v) => setLevel(v)}
-        className="w-fit"
-      >
-        {possibleLevels?.map((level) => (
-          <ToggleButton key={level} value={level} disabled={!allowedLevels.includes(level)}>
-            {level}
-          </ToggleButton>
+    <div className="relative w-full h-full flex flex-col items-center justify-center">
+      <Typography variant="h3" className="mb-4">Coral Level</Typography>
+      <div className="flex flex-col gap-y-2">
+        {possibleLevels.map((lvl, i) => (
+          <div
+            key={`button-for-${i}`}
+            role="button"
+            className={`w-[50px] h-[50px] flex items-center justify-center text-white font-bold cursor-pointer ${
+              level === lvl ? 'bg-red-500' : allowedLevels.includes(lvl) ? 'bg-blue-500' : 'bg-gray-100'
+            }`}
+            onClick={() => allowedLevels.includes(lvl) && handleToggle(lvl)}
+          >
+            {lvl}
+          </div>
         ))}
-      </ToggleButtonGroup>
+      </div>
     </div>
-  )
-}
-export default LevelButtonGroup
+  );
+};
+export default LevelButtonGroup;
