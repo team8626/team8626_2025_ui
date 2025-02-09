@@ -11,6 +11,12 @@ const LevelButtonGroup: FC = () => {
     NetworkTablesTypeInfos.kString,
     'L1'
   )
+  const possibleLevels = useNTValue<string[]>(
+    'SmartDashboard/Presets/UI/PossibleCORALLevels',
+    NetworkTablesTypeInfos.kStringArray,
+    ['L1', 'L2', 'L3', 'L4']
+  )
+
   const allowedLevels = useNTValue<string[]>(
     'SmartDashboard/Presets/UI/AllowedCORALLevels',
     NetworkTablesTypeInfos.kStringArray,
@@ -27,8 +33,8 @@ const LevelButtonGroup: FC = () => {
         onChange={(_e, v) => setLevel(v)}
         className="w-fit"
       >
-        {allowedLevels?.map((level) => (
-          <ToggleButton key={level} value={level}>
+        {possibleLevels?.map((level) => (
+          <ToggleButton key={level} value={level} disabled={!allowedLevels.includes(level)}>
             {level}
           </ToggleButton>
         ))}
