@@ -33,6 +33,16 @@ const Dashboard: FC = () => {
     NetworkTablesTypeInfos.kInteger,
     0
   )
+  const isAutonomous = useNTValue<boolean>(
+    'SmartDashboard/Dashboard/isAutonomous',
+    NetworkTablesTypeInfos.kBoolean,
+    false
+  )
+  const isTeleop = useNTValue<boolean>(
+    'SmartDashboard/Dashboard/isTeleop',
+    NetworkTablesTypeInfos.kBoolean,
+    false
+  )
 
   const [algaeState] = useNTState<string>(
     '/SmartDashboard/Dashboard/AlgaeState',
@@ -45,17 +55,26 @@ const Dashboard: FC = () => {
     'UNKNOWN'
   )
 
+  const [algaeShootTime] = useNTState<number>(
+    '/SmartDashboard/Subsystems/AlgaeShooter/Last Shot in (ms)',
+    NetworkTablesTypeInfos.kDouble,
+    0
+  )
+  const [coralShootTime] = useNTState<number>(
+    '/SmartDashboard/Subsystems/CoralShooter/Last Shot in (ms)',
+    NetworkTablesTypeInfos.kDouble,
+    0
+  )
+
   return (
     <>
       <div className="col-span-8 md:col-start-1 md:col-span-8 flex flex-col gap-y-2">
         <Typography variant="body1">Current State: {currentState}</Typography>
         <Typography variant="body1">Desired State: {desiredState}</Typography>
         <Typography variant="body1">Control Cycle: {controlCycle}</Typography>
-        <Typography variant="body1">Match Time: {matchTime}</Typography>
-
       </div>
-      <div className="col-span-4">
-        <Timer matchTime={matchTime}/>
+      <div className="fixed bottom-0 right-0 z-50 p-4">
+        <Timer matchTime={matchTime} isAuto={isAutonomous} isTeleop={isTeleop}/>
         </div>
       <div className="col-span-4">
         <LevelButtonGroup />
@@ -67,7 +86,7 @@ const Dashboard: FC = () => {
         <StateHistory />
       </div>
       <div className="col-span-4">
-        <GamePieceStates coralState={coralState} algaeState={algaeState}/>
+        <GamePieceStates coralState={coralState} algaeState={algaeState} coralShootTime={coralShootTime} algaeShootTime={algaeShootTime}/>
       </div>
       <div className="col-start-4 col-span-4">
         <Hexagon allianceColor={allianceColor}/>
