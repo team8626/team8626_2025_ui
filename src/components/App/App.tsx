@@ -7,7 +7,9 @@ const App: FC = () => {
   const connected = useNTConnected()
 
   return (
-    <main className="h-[100vh] grid grid-cols-4 gap-6 mx-auto px-6 py-2 md:grid-cols-12 w-full">
+    <main className="h-[100vh] grid grid-cols-4 gap-6 mx-auto px-6 py-2 md:grid-cols-12 w-full bg-gray-900 text-white"
+    style={{ backgroundImage: 'url(public/images/fd_frc_reefscape_bubbles.png)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}
+>
       {connected ? <Dashboard /> : <NotConnected />}
       <div className="absolute bottom-0 left-0 flex flex-row gap-x-2 p-4 items-center">
         <span className="font-medium">NT Connection Status: {connected}</span>
