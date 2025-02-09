@@ -1,6 +1,4 @@
 import type { FC } from 'react'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useNTState, useNTValue } from '../../../lib/ntcore-react'
 import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
@@ -16,8 +14,6 @@ const LevelButtonGroup: FC = () => {
     NetworkTablesTypeInfos.kStringArray,
     ['L1', 'L2', 'L3', 'L4']
   )
-  const numberOfButtons = possibleLevels.length;
-
 
   const allowedLevels = useNTValue<string[]>(
     'SmartDashboard/Presets/UI/AllowedCORALLevels',

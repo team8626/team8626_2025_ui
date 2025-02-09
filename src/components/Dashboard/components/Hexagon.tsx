@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC } from 'react';
 import { useMeasure } from 'react-use';
 import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
 import useNTState from '../../../lib/ntcore-react/useNTState';
