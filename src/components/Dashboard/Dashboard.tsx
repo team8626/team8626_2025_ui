@@ -68,7 +68,7 @@ const Dashboard: FC = () => {
 
   return (
     <>
-      <div className="col-span-8 md:col-start-1 md:col-span-8 flex flex-col gap-y-2">
+      <div className="col-span-3 md:col-start-1 md:col-span-3 flex flex-col gap-y-2">
         <Typography variant="body1">Current State: {currentState}</Typography>
         <Typography variant="body1">Desired State: {desiredState}</Typography>
         <Typography variant="body1">Control Cycle: {controlCycle}</Typography>
@@ -76,20 +76,22 @@ const Dashboard: FC = () => {
       <div className="fixed bottom-0 right-0 z-50 p-4">
         <Timer matchTime={matchTime} isAuto={isAutonomous} isTeleop={isTeleop}/>
         </div>
-      <div className="col-span-4">
-        <LevelButtonGroup />
-      </div>
-      <div className="col-span-4">
-        <IntakeToggle />
-      </div>
-      <div className="col-span-4">
+
+
+      <div className="col-span-3">
         <StateHistory />
       </div>
-      <div className="col-span-4">
+      <div className="col-span-3">
         <GamePieceStates coralState={coralState} algaeState={algaeState} coralShootTime={coralShootTime} algaeShootTime={algaeShootTime}/>
       </div>
-      <div className="col-start-4 col-span-4">
+      <div className="col-start-1 col-span-2">
+        <LevelButtonGroup />
+      </div>
+      <div className="col-start-3 col-span-8 flex justify-center items-center">
         <Hexagon allianceColor={allianceColor}/>
+      </div>
+      <div className="col-span-2">
+        <IntakeToggle />
       </div>
 
     </>
