@@ -2,7 +2,7 @@
 
 .hexagon {
     --b: 10px; /* adjust to control the border  */
-    height: 800px; /* adjust to control the size  */
+    height: 600px; /* adjust to control the size  */
     aspect-ratio: 1/cos(30deg);
     clip-path: 
       polygon(0 50%,50% -50%,100% 50%,50% 150%,0 50%,
@@ -13,5 +13,20 @@
       calc(75% - var(--b)*cos(60deg)) calc(var(--b)*sin(60deg)),
       calc(25% + var(--b)*cos(60deg)) calc(var(--b)*sin(60deg)),
       var(--b) 50%);
+    color: white;
     background: #3B8686;
+}
+
+.algae-light-reflection { 
+  box-shadow: 1px 1px 2px #cccccc, -5px -5px 10px #000;
+  background: linear-gradient(145deg, #69d492, #ddd);
+}
+
+.algae-light-reflection-selected { 
+  box-shadow: 1px 1px 2px #000, -5px -5px 10px #000;
+  background: linear-gradient(145deg, #ff0000, #aaa);
+}
+
+.shadow-box{
+  box-shadow: -5px -5px 10px #000, -5px -5px 10px #000;
 }
