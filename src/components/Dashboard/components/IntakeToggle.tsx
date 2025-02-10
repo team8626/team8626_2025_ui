@@ -33,7 +33,8 @@ const IntakeToggle: FC = () => {
         key="button_left"
         role="button"
         className={`w-[150px] h-[50px] flex items-center justify-center font-bold cursor-pointer transition-all duration-400 ease-in-out transform ${
-          intakeSide === 'left' ? 'bg-red-500 text-white scale-110 shadow-box z-10' : 'bg-white text-black'}`
+          intakeSide === 'left' ? 'bg-red-500 text-white scale-110 shadow-box z-10' : 'bg-white text-black'}
+          ${clicked === 'left' ? 'scale-120' : ''}`
         }
         onClick={() => handleToggle('left')}
       >
@@ -43,7 +44,8 @@ const IntakeToggle: FC = () => {
         key="buttom_right"
         role="button"
         className={`w-[150px] h-[50px] flex items-center justify-center font-bold cursor-pointer transition-all duration-400 ease-in-out transform ${
-          intakeSide === 'right' ? 'bg-red-500 text-white scale-110 shadow-box z-10' : 'bg-white text-black'}`
+          intakeSide === 'right' ? 'bg-red-500 text-white scale-110 shadow-box z-10' : 'bg-white text-black'}
+          ${clicked === 'right' ? 'scale-120' : ''}`
         }
         onClick={() => handleToggle('right')}
       >

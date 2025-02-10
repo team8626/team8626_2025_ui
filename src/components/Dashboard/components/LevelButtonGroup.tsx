@@ -38,7 +38,8 @@ const LevelButtonGroup: FC = () => {
             key={`button-for-${i}`}
             role="button"
             className={`w-[50px] h-[50px] flex items-center justify-center font-bold cursor-pointer transition-all duration-400 ease-in-out transform ${
-              level === lvl ? 'bg-red-500 text-white scale-110' : allowedLevels.includes(lvl) ? 'bg-white text-black' : 'bg-gray-800 text-gray-700'}`
+              level === lvl ? 'bg-red-500 text-white scale-110' : allowedLevels.includes(lvl) ? 'bg-white text-black' : 'bg-gray-800 text-gray-700'}
+              ${clicked === lvl ? 'scale-120' : ''}`
             }
             onClick={() => allowedLevels.includes(lvl) && handleToggle(lvl)}
           >

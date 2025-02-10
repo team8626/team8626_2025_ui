@@ -10,7 +10,7 @@ const Hexagon: FC = ( ) => {
   const radiusCoral = 250; // Adjust the radius to fit the new size
   const radiusAlgae = 150; // Adjust the radius to fit the new size
   const circleSizeCoral = 100; // Adjust the circle size to fit the new size
-  const circleSizeAlgae = 150; // Adjust the circle size to fit the new size
+  //const circleSizeAlgae = 140; // Adjust the circle size to fit the new size
 
   const [allianceColor] = useNTState<string>(
     '/SmartDashboard/Dashboard/AllianceColor',
@@ -125,7 +125,7 @@ const Hexagon: FC = ( ) => {
               top: `${y}px`,
               zIndex: 30
             }}
-            onClick={() => handleToggleAlgae(i)}
+            onClick={() => handleToggleAlgae(i*2)}
           >
             <span className="text-2xl">{algaeBranch}</span> {/* Change the font size here */}
           
