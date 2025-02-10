@@ -1,19 +1,32 @@
 import type { FC } from 'react'
 import Typography from '@mui/material/Typography'
+import useNTValue from '../../../lib/ntcore-react/useNTValue'
+import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
 
-interface TimerProps {
-  matchTime: number;
-  isTeleop?: boolean;
-  isAuto?: boolean;
- }
+const Timer: FC = () => {
+    const matchTime = useNTValue<number>(
+      'SmartDashboard/Dashboard/matchTime',
+      NetworkTablesTypeInfos.kInteger,
+      0
+    )
+    const isAutonomous = useNTValue<boolean>(
+      'SmartDashboard/Dashboard/isAutonomous',
+      NetworkTablesTypeInfos.kBoolean,
+      false
+    )
+    const isTeleop = useNTValue<boolean>(
+      'SmartDashboard/Dashboard/isTeleop',
+      NetworkTablesTypeInfos.kBoolean,
+      false
+    )
 
-const formatTime = (timeInSeconds: number): string => {
-  const minutes = Math.floor(timeInSeconds / 60);
-  const seconds = timeInSeconds % 60;
-  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-};
+    const formatTime = (timeInSeconds: number): string => {
+      const minutes = Math.floor(timeInSeconds / 60);
+      const seconds = timeInSeconds % 60;
+      return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    };
 
-const Timer: FC<TimerProps> = ({matchTime, isTeleop, isAuto}) => {
+
     // Determine the background color based on the props
     let backgroundColor = 'lightgrey';
     let textColor = 'black';
@@ -24,7 +37,7 @@ const Timer: FC<TimerProps> = ({matchTime, isTeleop, isAuto}) => {
     } else if (isTeleop) {
       backgroundColor = 'green';
       textColor = 'white';
-    } else if (isAuto) {
+    } else if (isAutonomous) {
       backgroundColor = 'blue';
       textColor = 'white';
     }
