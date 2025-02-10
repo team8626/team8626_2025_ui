@@ -14,7 +14,6 @@ const LevelButtonGroup: FC = () => {
     NetworkTablesTypeInfos.kStringArray,
     ['L1', 'L2', 'L3', 'L4']
   )
-
   const allowedLevels = useNTValue<string[]>(
     'SmartDashboard/Presets/UI/AllowedCORALLevels',
     NetworkTablesTypeInfos.kStringArray,
@@ -31,23 +30,24 @@ const LevelButtonGroup: FC = () => {
   }
 
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center">
-      <Typography variant="h3" className="mb-4">Coral Level</Typography>
+    <div className="flex flex-col items-center gap-y-2 p-4 justify-start">
+      <Typography variant="h4" className="mb-4">Coral Level</Typography>
       <div className="flex flex-col gap-y-2">
-        {possibleLevels.map((lvl, i) => (
+      {possibleLevels.slice().reverse().map((lvl, i) => (
           <div
             key={`button-for-${i}`}
             role="button"
-            className={`w-[100px] h-[100px] flex items-center justify-center text-white font-bold cursor-pointer transition-all duration-400 ease-in-out transform ${
-              level === lvl ? 'bg-red-500' : allowedLevels.includes(lvl) ? '' : 'bg-gray-100'
-            } ${clicked === lvl ? 'scale-110' : ''}`}
+            className={`w-[50px] h-[50px] flex items-center justify-center font-bold cursor-pointer transition-all duration-400 ease-in-out transform ${
+              level === lvl ? 'bg-red-500 text-white scale-110' : allowedLevels.includes(lvl) ? 'bg-white text-black' : 'bg-gray-800 text-gray-700'}`
+            }
             onClick={() => allowedLevels.includes(lvl) && handleToggle(lvl)}
           >
-            <span className="text-3xl">{lvl}</span> {/* Change the font size here */}
+            <span className="text-2xl">{lvl}</span>
             </div>
         ))}
       </div>
     </div>
+  
   );
 };
 export default LevelButtonGroup;
