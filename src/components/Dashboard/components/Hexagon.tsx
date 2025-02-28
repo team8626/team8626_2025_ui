@@ -13,7 +13,7 @@ const Hexagon: FC = ( ) => {
   //const circleSizeAlgae = 140; // Adjust the circle size to fit the new size
 
   const [allianceColor] = useNTState<string>(
-    '/SmartDashboard/Dashboard/AllianceColor',
+    'SmartDashboard/Dashboard/AllianceColor',
     NetworkTablesTypeInfos.kString,
     'UNKNOWN'
   )
@@ -23,14 +23,21 @@ const Hexagon: FC = ( ) => {
 
   // State to manage the selected button index
   const [selectedCoral, setSelectedCoral] = useNTState<string>(
-    'SmartDashboard/Presets/UI/SelectedReefBranch',
+    'SmartDashboard/Presets/UI/SelectedCoralBranch',
     NetworkTablesTypeInfos.kString,
     ''
   );
 
+    // State to manage the selected button index
+    // const [selectedCoralID, setSelectedCoralID] = useNTState<number>(
+    //   'SmartDashboard/Presets/UI/SelectedCoralBranchID',
+    //   NetworkTablesTypeInfos.kInteger,
+    //   0
+    // );
+
   // State to manage the selected button index
   const [selectedAlgae, setSelectedAlgae] = useNTState<string>(
-    'SmartDashboard/Presets/UI/SelectedAlgaeBranch',
+    'SmartDashboard/Presets/UI/SelectedAlgaeFace',
     NetworkTablesTypeInfos.kString,
     ''
   );
@@ -45,6 +52,7 @@ const Hexagon: FC = ( ) => {
       setSelectedCoral('');
     } else { 
       setSelectedCoral(letter);
+      // setSelectedCoralID(index);
     };
     setClickedCoral(letter);
     setTimeout(() => setClickedCoral(null), 500); // Reset the clicked state after 500ms
@@ -52,9 +60,9 @@ const Hexagon: FC = ( ) => {
 
     // Function to handle button toggle
     const handleToggleAlgae = (index: number) => {
-      console.log('ALGAE - index', index)
+      // console.log('ALGAE - index', index)
       const algaeBranch = String.fromCharCode(65 + index)+String.fromCharCode(65 + index+1); // Convert index to corresponding letter
-      console.log('ALGAE - algaeBranch', algaeBranch)
+      // console.log('ALGAE - algaeBranch', algaeBranch)
       if(selectedAlgae === algaeBranch) {
         setSelectedAlgae('');
       } else { 

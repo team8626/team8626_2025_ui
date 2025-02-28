@@ -6,7 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <NTProvider uri="127.0.0.1" port={5810}>
+    <NTProvider uri="localhost" port={5810}>
       <App />
       <CssBaseline />
     </NTProvider>

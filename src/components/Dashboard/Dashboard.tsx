@@ -1,7 +1,7 @@
 import { useNTState, useNTValue } from '../../lib/ntcore-react'
 import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
 import { type FC } from 'react'
-import { LevelButtonGroup, IntakeToggle, StateHistory, Hexagon, Timer, GamePieceStates, AutoPath} from './components'
+import { LevelButtonGroup, IntakeToggle, StateHistory, Hexagon, Timer, GamePieceStates, AutoPath, DTPToggle} from './components'
 import { Typography } from '@mui/material'
 
 const Dashboard: FC = () => {
@@ -41,6 +41,7 @@ const Dashboard: FC = () => {
       <div className="col-span-2 flex flex-col gap-y-4">
         <LevelButtonGroup />
         <IntakeToggle />
+        <DTPToggle />
       </div>
 
       <div className="col-span-7 flex justify-center items-center">

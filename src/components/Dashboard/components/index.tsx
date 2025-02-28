@@ -5,6 +5,7 @@ import Hexagon from './Hexagon'
 import Timer from './Timer'
 import GamePieceStates from './GamePieceStates'
 import AutoPath from './AutoPath'
+import DTPToggle from './DTPToggle'
 
 
-export { LevelButtonGroup, IntakeToggle, StateHistory, Intake, Hexagon, Timer, GamePieceStates, AutoPath }
+export { LevelButtonGroup, IntakeToggle, StateHistory, Intake, Hexagon, Timer, GamePieceStates, AutoPath, DTPToggle }

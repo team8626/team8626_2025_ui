@@ -5,17 +5,17 @@ import { NetworkTablesTypeInfos } from 'ntcore-ts-client'
 
 const LevelButtonGroup: FC = () => {
   const [level, setLevel] = useNTState<string>(
-    'SmartDashboard/Presets/UI/SelectedCORALLevel',
+    'SmartDashboard/Presets/UI/SelectedCoralLevel',
     NetworkTablesTypeInfos.kString,
-    'L1'
+    ''
   )
   const possibleLevels = useNTValue<string[]>(
-    'SmartDashboard/Presets/UI/PossibleCORALLevels',
+    '/SmartDashboard/Presets/UI/PossibleCoralLevels',
     NetworkTablesTypeInfos.kStringArray,
     ['L1', 'L2', 'L3', 'L4']
   )
   const allowedLevels = useNTValue<string[]>(
-    'SmartDashboard/Presets/UI/AllowedCORALLevels',
+    '/SmartDashboard/Presets/UI/AllowedCoralLevels',
     NetworkTablesTypeInfos.kStringArray,
     ['L1', 'L4']
   )
@@ -28,7 +28,7 @@ const LevelButtonGroup: FC = () => {
     setClicked(new_level);
     setTimeout(() => setClicked(null), 500); // Reset the clicked state after 500ms
   }
-
+  
   return (
     <div className="flex flex-col items-center gap-y-2 p-4 justify-start">
       <Typography variant="h4" className="mb-4">Coral Level</Typography>
